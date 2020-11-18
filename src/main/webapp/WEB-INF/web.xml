@@ -69,15 +69,76 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>ClubServlet</servlet-name>
-        <servlet-class>Servlet.ClubServlet</servlet-class>
+        <servlet-name>ClubsServlet</servlet-name>
+        <servlet-class>Servlet.ClubsServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>ClubServlet</servlet-name>
-        <url-pattern>/ClubServlet/*</url-pattern>
+        <servlet-name>ClubsServlet</servlet-name>
+        <url-pattern>/ClubsServlet</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>ClubAddDeleteServlet</servlet-name>
+        <servlet-class>Servlet.ClubAddDeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClubAddDeleteServlet</servlet-name>
+        <url-pattern>/ClubAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClubAddDeleteServlet</servlet-name>
+        <url-pattern>/ClubDeleteServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ClubUpdateServlet</servlet-name>
+        <servlet-class>Servlet.ClubUpdateServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClubUpdateServlet</servlet-name>
+        <url-pattern>/ClubUpdateServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>EventsServlet</servlet-name>
+        <servlet-class>Servlet.EventsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EventsServlet</servlet-name>
+        <url-pattern>/EventsServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EventAddDeleteServlet</servlet-name>
+        <servlet-class>Servlet.EventAddDeleteServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EventAddDeleteServlet</servlet-name>
+        <url-pattern>/EventAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EventAddDeleteServlet</servlet-name>
+        <url-pattern>/EventDeleteServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>EventUpdateServlet</servlet-name>
+        <servlet-class>Servlet.EventUpdateServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>EventUpdateServlet</servlet-name>
+        <url-pattern>/EventUpdateServlet</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>NewsServlet</servlet-name>
@@ -90,12 +151,27 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>EventServlet</servlet-name>
-        <servlet-class>Servlet.EventServlet</servlet-class>
+        <servlet-name>NewsAddDeleteServlet</servlet-name>
+        <servlet-class>Servlet.NewsAddDeleteServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>EventServlet</servlet-name>
-        <url-pattern>/EventServlet</url-pattern>
+        <servlet-name>NewsAddDeleteServlet</servlet-name>
+        <url-pattern>/NewsAddServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewsAddDeleteServlet</servlet-name>
+        <url-pattern>/NewsDeleteServlet</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>NewsUpdateServlet</servlet-name>
+        <servlet-class>Servlet.NewsUpdateServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>NewsUpdateServlet</servlet-name>
+        <url-pattern>/NewsUpdateServlet</url-pattern>
     </servlet-mapping>
 </web-app>

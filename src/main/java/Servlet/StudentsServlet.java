@@ -19,7 +19,7 @@ public class StudentsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("student_id"));
         Student student = studentRepo.findReaderById(id);
-        System.out.println(student);
+
         request.setAttribute("student",student);
         request.getRequestDispatcher("StudentsInfo.jsp").forward(request,response);
 

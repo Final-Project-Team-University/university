@@ -18,7 +18,6 @@
 </head>
 <body>
 <%
-
     IStudentRepo studentRepo = new StudentRepo();
     ArrayList<Student> students = studentRepo.query();
     Collections.sort(students);

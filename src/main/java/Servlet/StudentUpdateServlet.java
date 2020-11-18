@@ -28,9 +28,14 @@ public class StudentUpdateServlet extends HttpServlet {
         String major = request.getParameter("major");
         String year = request.getParameter("year");
         Student student = new Student(id, firstname, lastname, email, password, url, number, group, major, year);
+
+        System.out.println(student);
+
         if(firstname!=null && lastname!=null && email!=null && password!=null && url!=null && number!=null && group!=null && major!=null && year!=null && !studentRepo.checkEmailExcept(student)) {
+            System.out.println("1");
             studentRepo.updateReader(student);
-            out.println("Changed!");
+            System.out.println("2");
+            out.println("New info is edited!");
         }
         else{
             out.println("This email is already exists!");

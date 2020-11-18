@@ -65,10 +65,22 @@ h2 small {
 .responsive-table .col-9 {
     flex-basis: 25%;
 }
-
 .responsive-table .col-10 {
     flex-basis: 11%;
 }
+.responsive-table .col-11 {
+    flex-basis: 20%;
+}
+.responsive-table .col-12 {
+    flex-basis: 10%;
+}
+.responsive-table .col-13 {
+    flex-basis: 70%;
+}
+.responsive-table .col-14 {
+    flex-basis: 80%;
+}
+
 
 
 @media all and (max-width: 767px) {
@@ -92,4 +104,32 @@ h2 small {
         flex-basis: 50%;
         text-align: right;
     }
+}
+
+
+body{
+   background-image: url("https://cdn.jsdelivr.net/gh/AJRECHO/WWW@master/uPic/toutu/72379562_p0ys.png");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+
+
+    font-family: "Garamond", Courier, monospace;
+
+
+}
+
+label{
+    color: white;
+    font-size: 35px;
+}
+
+h3, h2{
+    color: white;
+    font-size: 45px;
+}
+
+.start{
+    color: white;
+    font-size: 25px;
 }

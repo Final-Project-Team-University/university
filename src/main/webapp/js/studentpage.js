@@ -1,25 +1,9 @@
 $(document).ready(function() {
-    // $("#btn1").click(function(){
-    //     if(EmailValid() && NameValid() && SurnameValid()) {
-    //         $.ajax({
-    //             url: "http://localhost:8080/CalendarEvents_war_exploded/adduser",
-    //             type: "POST",
-    //             data: {"name": $("#name").val(), "email": $("#email").val(), "surname": $("#surname").val()},
-    //             beforeSend: function () {
-    //                 $("#btn1").prop("disabled", true);
-    //             },
-    //             success: function (data) {
-    //                 alert(data);
-    //                 $("#btn1").prop("disabled", false);
-    //                 location.reload(true);
-    //             }
-    //         });
-    //     }
-    // });
+
 
     $("#delete").click(function() {
         $.ajax({
-            url:"http://localhost:8080/demo_login_war_exploded/StudentDeleteServlet",
+            url:"http://localhost:8080/final_war_exploded/StudentDeleteServlet",
             type:"get",
             data:{"id":$("#student_id").val()},
             beforeSend:function(){
@@ -28,7 +12,7 @@ $(document).ready(function() {
             success:function(data){
                 alert(data);
                 $("#delete").prop("disabled",false);
-                $(location).attr('href', "http://localhost:8080/demo_login_war_exploded/StudentsServlet?");
+                $(location).attr('href', "http://localhost:8080/final_war_exploded/StudentsServlet?");
             }
         });
     });
@@ -37,9 +21,10 @@ $(document).ready(function() {
 
 
     $("#btnRedact").click(function() {
-        if(EmailValid() && FirstNameValid() && LastNameValid() && PasswordValid() && UrlValid() && NumberValid()) {
+        if(EmailValid() && FirstNameValid() && LastNameValid() && PasswordValid() && UrlValid() && NumberValid()  && MajorValid()  && GroupValid()  && YearValid()) {
+
             $.ajax({
-                url: "http://localhost:8080/demo_login_war_exploded/StudentUpdateServlet",
+                url: "http://localhost:8080/final_war_exploded/StudentUpdateServlet",
                 type: "post",
                 data: {
                     "id": $("#student_id").val(),
@@ -48,7 +33,10 @@ $(document).ready(function() {
                     "email": $("#email").val(),
                     "password": $("#password").val(),
                     "url": $("#url").val(),
-                    "number": $("#number").val()
+                    "number": $("#number").val(),
+                    "group": $("#group").val(),
+                    "major": $("#major").val(),
+                    "year": $("#year").val()
                 },
                 beforeSend: function () {
                     $("#btnRedact").prop("disabled", true);
@@ -97,7 +85,7 @@ $(document).ready(function() {
             $('#firstname').focus();
             return false;
         }else{
-            $('#regisErr2').removeClass('error').text('');
+            $('#regisErr2').text('');
             return true;
         }
     };
@@ -155,6 +143,45 @@ $(document).ready(function() {
     };
 
 
+    var MajorValid = function(){
+        major = $('#major').val();
+        if (major == '') {
+            $('#regisErr7').text('* This field is required !');
+            $('#major').focus();
+            return false;
+        }else{
+            $('#regisErr7').text('');
+            return true;
+        }
+    };
+
+
+    var GroupValid = function(){
+        group = $('#group').val();
+        if (group == '') {
+            $('#regisErr8').text('* This field is required !');
+            $('#group').focus();
+            return false;
+        }else{
+            $('#regisErr8').text('');
+            return true;
+        }
+    };
+
+    var YearValid = function(){
+        year = $('#year').val();
+        if (year == '') {
+            $('#regisErr9').text('* This field is required !');
+            $('#year').focus();
+            return false;
+        }else{
+            $('#regisErr9').text('');
+            return true;
+        }
+    };
+
+
+
     $("#firstname").keyup(function(){
         FirstNameValid();
     });
@@ -172,6 +199,15 @@ $(document).ready(function() {
     });
     $("#number").keyup(function(){
         NumberValid();
+    });
+    $("#major").keyup(function(){
+        MajorValid();
+    });
+    $("#group").keyup(function(){
+        GroupValid();
+    });
+    $("#year").keyup(function(){
+        YearValid();
     });
 
 });

@@ -29,6 +29,9 @@ public class StudentAddDeleteServlet extends HttpServlet {
         String major = request.getParameter("major");
         String year = request.getParameter("year");
         Student student = new Student(firstname, lastname, email, password, url, number, group, major, year);
+
+        System.out.println(student);
+
         if(firstname!=null && lastname!=null && email!=null && password!=null && url!=null && number!=null && group!=null && major!=null && year!=null && !studentRepo.checkEmail(email)) {
             studentRepo.add(student);
             out.println("New Student is added!");
@@ -45,5 +48,7 @@ public class StudentAddDeleteServlet extends HttpServlet {
 
         studentRepo.deleteReaderById(id);
         printWriter.println("Student has been deleted");
+
+        request.getRequestDispatcher("StudentsList.jsp");
     }
 }

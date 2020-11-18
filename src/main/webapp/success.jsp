@@ -8,26 +8,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>User</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin.css">
+
 </head>
 <body>
 <h1><% String emai = (String) session.getAttribute("email");  %> <%=emai%> successfully logged in!</h1>
 
 <input type="button" onclick="window.location.href='Students.jsp'" value="List of Students"/>
 
+<input type="button" onclick="window.location.href='Clubs.jsp'" value="List of Clubs"/>
 
-<form action="${pageContext.request.contextPath}/EventServlet" method="get">
+<input type="button" onclick="window.location.href='Events.jsp'" value="List of Events"/>
 
-    <td><input type="submit" name="submit" value="List of Events"></td>
+<input type="button" onclick="window.location.href='News.jsp'" value="List of News"/>
 
-</form>
-<form action="${pageContext.request.contextPath}/NewsServlet" method="get">
 
-    <td><input type="submit" name="submit" value="List of News"></td>
 
-</form>
 
-<input type="button" onclick="window.location.href='http://localhost:8080/final_war_exploded/list'" value="List of Clubs"/>
 <form class="form" action="<%= request.getContextPath() %>/LogoutServlet">
 
     <p><input type="submit" name="submit"  class="button-submit" value="logout"></p>

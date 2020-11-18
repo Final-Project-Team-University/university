@@ -47,7 +47,7 @@ public class StudentRepo implements IStudentRepo{
                         rs.getString("password"),
                         rs.getString("url"),
                         rs.getString("number"),
-                        rs.getString("group"),
+                        rs.getString("groupz"),
                         rs.getString("major"),
                         rs.getString("year")
                 );
@@ -76,7 +76,7 @@ public class StudentRepo implements IStudentRepo{
                         rs.getString("password"),
                         rs.getString("url"),
                         rs.getString("number"),
-                        rs.getString("group"),
+                        rs.getString("groupz"),
                         rs.getString("major"),
                         rs.getString("year")
                 );
@@ -89,11 +89,11 @@ public class StudentRepo implements IStudentRepo{
 
     public void deleteReaderById(int id) {
         try {
-            String sql = "DELETE FROM students WHERE id = ?";
+                String sql = "DELETE FROM students WHERE id = ?";
             PreparedStatement stmt = dbrepo.getConnection().prepareStatement(sql);
             System.out.println(id);
             stmt.setInt(1, id);
-            stmt.executeQuery();
+            stmt.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -101,7 +101,7 @@ public class StudentRepo implements IStudentRepo{
 
     public void updateReader(Student student) {
         try {
-            String sql = "UPDATE students SET firstname = ?, lastname = ?, email = ?, password = ?, url = ?, number = ?, group = ?, major = ?, year = ? WHERE id= ?";
+            String sql = "UPDATE students SET firstname = ?, lastname = ?, email = ?, password = ?, url = ?, number = ?, groupz = ?, major = ?, year = ? WHERE id= ?";
             PreparedStatement stmt = dbrepo.getConnection().prepareStatement(sql);
             stmt.setString(1, student.getFirstname());
             stmt.setString(2, student.getLastname());
@@ -113,7 +113,7 @@ public class StudentRepo implements IStudentRepo{
             stmt.setString(8, student.getMajor());
             stmt.setString(9, student.getYear());
             stmt.setInt(10, student.getId());
-            stmt.executeQuery();
+            stmt.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -135,7 +135,7 @@ public class StudentRepo implements IStudentRepo{
                         rs.getString("password"),
                         rs.getString("url"),
                         rs.getString("number"),
-                        rs.getString("group"),
+                        rs.getString("groupz"),
                         rs.getString("major"),
                         rs.getString("year")
                 );
@@ -199,7 +199,7 @@ public class StudentRepo implements IStudentRepo{
                         rs.getString("password"),
                         rs.getString("url"),
                         rs.getString("number"),
-                        rs.getString("group"),
+                        rs.getString("groupz"),
                         rs.getString("major"),
                         rs.getString("year")
                 );
@@ -227,7 +227,7 @@ public class StudentRepo implements IStudentRepo{
                         rs.getString("password"),
                         rs.getString("url"),
                         rs.getString("number"),
-                        rs.getString("group"),
+                        rs.getString("groupz"),
                         rs.getString("major"),
                         rs.getString("year")
                 );
@@ -255,7 +255,7 @@ public class StudentRepo implements IStudentRepo{
                         rs.getString("password"),
                         rs.getString("url"),
                         rs.getString("number"),
-                        rs.getString("group"),
+                        rs.getString("groupz"),
                         rs.getString("major"),
                         rs.getString("year")
                 );
@@ -283,7 +283,7 @@ public class StudentRepo implements IStudentRepo{
                         rs.getString("password"),
                         rs.getString("url"),
                         rs.getString("number"),
-                        rs.getString("group"),
+                        rs.getString("groupz"),
                         rs.getString("major"),
                         rs.getString("year")
                 );
@@ -298,7 +298,7 @@ public class StudentRepo implements IStudentRepo{
 
     public ArrayList<Student> queryGroupF() {
         try {
-            String sql = "Select * from students WHERE students.group like '1904' ";
+            String sql = "Select * from students WHERE students.groupz like '1904' ";
             Statement stmt = dbrepo.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             ArrayList<Student> students = new ArrayList<>();
@@ -311,7 +311,7 @@ public class StudentRepo implements IStudentRepo{
                         rs.getString("password"),
                         rs.getString("url"),
                         rs.getString("number"),
-                        rs.getString("group"),
+                        rs.getString("groupz"),
                         rs.getString("major"),
                         rs.getString("year")
                 );
@@ -326,7 +326,7 @@ public class StudentRepo implements IStudentRepo{
 
     public ArrayList<Student> queryGroupS() {
         try {
-            String sql = "Select * from students WHERE students.group like '1905' ";
+            String sql = "Select * from students WHERE students.groupz like '1905' ";
             Statement stmt = dbrepo.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             ArrayList<Student> students = new ArrayList<>();
@@ -339,7 +339,7 @@ public class StudentRepo implements IStudentRepo{
                         rs.getString("password"),
                         rs.getString("url"),
                         rs.getString("number"),
-                        rs.getString("group"),
+                        rs.getString("groupz"),
                         rs.getString("major"),
                         rs.getString("year")
                 );
@@ -368,7 +368,7 @@ public class StudentRepo implements IStudentRepo{
                         rs.getString("password"),
                         rs.getString("url"),
                         rs.getString("number"),
-                        rs.getString("group"),
+                        rs.getString("groupz"),
                         rs.getString("major"),
                         rs.getString("year")
                 );
@@ -397,7 +397,7 @@ public class StudentRepo implements IStudentRepo{
                         rs.getString("password"),
                         rs.getString("url"),
                         rs.getString("number"),
-                        rs.getString("group"),
+                        rs.getString("groupz"),
                         rs.getString("major"),
                         rs.getString("year")
                 );

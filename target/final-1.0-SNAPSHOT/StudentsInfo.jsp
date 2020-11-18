@@ -14,7 +14,7 @@
 <head>
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/table.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -63,39 +63,54 @@
     </div>
 
 
-    <h3 class="mt-3">Profile details</h3>
+    <h3 class="mt-3">Student profile details</h3>
     <hr>
     <div class="row">
         <div class="col">
-            <label>Reader Name</label>
+            <label class="start">Student Firstname</label>
             <input type="text" class="form-control" name="firstname" id="firstname" value="<%= student.getFirstname() %>">
             <h6 style="color: red" id="regisErr2"></h6>
         </div>
         <div class="col">
-            <label>Reader Name</label>
+            <label class="start">Student Lastname</label>
             <input type="text" class="form-control" name="lastname" id="lastname" value="<%= student.getLastname() %>">
             <h6 style="color: red" id="regisErr3"></h6>
         </div>
         <div class="col">
-            <label>Reader Email</label>
+            <label class="start">Student Email</label>
             <input type="text" class="form-control" name="email" id="email" value="<%= student.getEmail() %>">
             <input style="display: none;" id="student_id" value="<%=student.getId()%>">
             <h6 style="color: red" id="regisErr1"></h6>
         </div>
         <div class="col">
-            <label>Reader Name</label>
+            <label class="start">Student Password</label>
             <input type="text" class="form-control" name="password" id="password" value="<%= student.getPassword() %>">
             <h6 style="color: red" id="regisErr4"></h6>
         </div>
         <div class="col">
-            <label>Reader Surname</label>
+            <label class="start">Student Photo</label>
             <input type="text" class="form-control" name="url" id="url" value="<%= student.getUrl() %>">
             <h6 style="color: red" id="regisErr5"></h6>
         </div>
         <div class="col">
-            <label>Reader Surname</label>
+            <label class="start">Student Number</label>
             <input type="text" class="form-control" name="number" id="number" value="<%= student.getNumber() %>">
             <h6 style="color: red" id="regisErr6"></h6>
+        </div>
+        <div class="col">
+            <label class="start">Student Major</label>
+            <input type="text" class="form-control" name="major" id="major" value="<%= student.getMajor() %>">
+            <h6 style="color: red" id="regisErr7"></h6>
+        </div>
+        <div class="col">
+            <label class="start">Student Group</label>
+            <input type="text" class="form-control" name="group" id="group" value="<%= student.getGroup() %>">
+            <h6 style="color: red" id="regisErr8"></h6>
+        </div>
+        <div class="col">
+            <label class="start">Student Year</label>
+            <input type="text" class="form-control" name="year" id="year" value="<%= student.getYear() %>">
+            <h6 style="color: red" id="regisErr9"></h6>
         </div>
     </div>
     <br>

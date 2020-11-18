@@ -2,10 +2,7 @@ package Servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -41,6 +38,11 @@ public class LoginServlet extends HttpServlet {
                 if( email!=null && password!=null && email.equals(resultSet.getString(4)) && password.equals(resultSet.getString(5)))
                 {
                     session.setAttribute("email", email);
+
+                    Cookie cookie = new Cookie("email", email);
+                    response.addCookie(cookie);
+                    cookie.setMaxAge(1600);
+
                     flag = true;
 
 
@@ -48,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 
                 }else if(email.equals("admin@mail.ru") && password.equals("admin")){//условие админа
                     session.setAttribute("admin", email);
-                    response.sendRedirect("StudentsList.jsp");
+                    response.sendRedirect("adminpage.jsp");
 
                 }
             }

@@ -1,7 +1,7 @@
 package domain;
 
 
-public class News {
+public class News implements Comparable {
     protected int id;
     protected String title;
     protected String content;
@@ -56,5 +56,10 @@ public class News {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }

@@ -5,7 +5,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClubDAO {
+public class ClubDAO implements IClub{
     private String jdbcURL = "jdbc:postgresql://localhost:5432/university";
     private String jdbcUsername = "postgres";
     private String jdbcPassword = "123";
@@ -35,7 +35,7 @@ public class ClubDAO {
         return connection;
     }
 
-    public void insertClub(Club club) throws SQLException {
+    public void insert(Club club) throws SQLException {
         //   System.out.println(INSERT_CLUBS_SQL);
         // try-with-resource statement will auto close the connection.
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CLUBS_SQL)) {
@@ -107,7 +107,10 @@ public class ClubDAO {
         return rowDeleted;
     }
 
-    public boolean updateClub(Club club) throws SQLException {
+
+
+
+    public boolean update(Club club) throws SQLException {
         boolean rowUpdated;
         System.out.println(club);
         try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_CLUBS_SQL);) {
@@ -135,4 +138,27 @@ public class ClubDAO {
             }
         }
     }
+
+
+    public Club findClubById(int id) {
+        try {
+            String sql = "SELECT * FROM clubs WHERE id = ?";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new Club(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("description")
+                );
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
+
+
+
 }

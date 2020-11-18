@@ -75,7 +75,7 @@
         <input type="checkbox" rel="second" />
         Second Year
     </label>
-    <label style="padding-left: 20%">
+    <label style="padding-left: 5%">
         <input type="checkbox" rel="all" />
         Show all
     </label>
@@ -411,11 +411,7 @@
 
 </ul>
 
-<form class="form" action="<%= request.getContextPath() %>/LogoutServlet">
 
-    <p><input type="submit" name="submit"  class="button-submit" value="logout"></p>
-
-</form>
 
 
 <script src="${pageContext.request.contextPath}/js/filtermajor.js"></script>

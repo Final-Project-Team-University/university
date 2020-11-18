@@ -1,12 +1,15 @@
 package Repo;
 
+import domain.Club;
 import domain.News;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
-public class NewsDAO {
+public class NewsDAO implements INews{
     private String jdbcURL = "jdbc:postgresql://localhost:5432/university";
     private String jdbcUsername = "postgres";
     private String jdbcPassword = "123";
@@ -14,17 +17,17 @@ public class NewsDAO {
     private static final String INSERT_NEWS_SQL = "INSERT INTO news" + "  (title, content) VALUES " +
             " (?, ?);";
 
-    private static final String SELECT_NEWS_BY_ID = "select id,title, content from news where id =?";
-    private static final String SELECT_ALL_NEWS = "select * from news;";
+    private static final String SELECT_NEWS_BY_ID = "select id,title, content from news where id =?;";
+    private static final String SELECT_ALL_NEWS = "select * from news";
     private static final String DELETE_NEWS_SQL = "delete from news where id = ?;";
-    private static final String UPDATE_NEWS_SQL = "update news set title=?,  content= ? where id = ?;";
+    private static final String UPDATE_NEWS_SQL = "update news set title = ?, content= ? where id = ?;";
 
     public NewsDAO() {}
 
     protected Connection getConnection() {
         Connection connection = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
@@ -36,8 +39,8 @@ public class NewsDAO {
         return connection;
     }
 
-    public void insertNews(News news) throws SQLException {
-        // System.out.println(INSERT_NEWS_SQL);
+    public void insert(News news) throws SQLException {
+        //   System.out.println(INSERT_CLUBS_SQL);
         // try-with-resource statement will auto close the connection.
         try (Connection connection = getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_NEWS_SQL)) {
             preparedStatement.setString(1, news.getTitle());
@@ -58,8 +61,9 @@ public class NewsDAO {
             System.out.println(preparedStatement);
             // Step 3: Execute the query or update query
             ResultSet rs = preparedStatement.executeQuery();
-            System.out.println(rs);
+
             // Step 4: Process the ResultSet object.
+            System.out.println(rs);
             while (rs.next()) {
                 String title = rs.getString("title");
                 String content = rs.getString("content");
@@ -71,10 +75,10 @@ public class NewsDAO {
         return null;
     }
 
-    public List< News > selectAllNews() {
+    public Queue<News> selectAllNews() {
 
         // using try-with-resources to avoid closing resources (boiler plate code)
-        List <News> news = new ArrayList<>();
+        Queue <News> news = new PriorityQueue<>();
         // Step 1: Establishing a Connection
         try (Connection connection = getConnection();
 
@@ -99,7 +103,6 @@ public class NewsDAO {
 
     public boolean deleteNews(int id) throws SQLException {
         boolean rowDeleted;
-
         try (Connection connection = getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_NEWS_SQL);) {
             statement.setInt(1, id);
@@ -108,7 +111,7 @@ public class NewsDAO {
         return rowDeleted;
     }
 
-    public boolean updateNews(News news) throws SQLException {
+    public boolean update(News news) throws SQLException {
         boolean rowUpdated;
         System.out.println(news);
         try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement(UPDATE_NEWS_SQL);) {
@@ -135,5 +138,24 @@ public class NewsDAO {
                 }
             }
         }
+    }
+
+    public News findNewsById(int id) {
+        try {
+            String sql = "SELECT * FROM news WHERE id = ?";
+            PreparedStatement stmt = getConnection().prepareStatement(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new News(
+                        rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("content")
+                );
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 }

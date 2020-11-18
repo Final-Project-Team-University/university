@@ -36,4 +36,20 @@ public class Student extends User{
         int id = ((Student)o).getId();
         return this.getId()-id;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", url='" + url + '\'' +
+                ", number='" + number + '\'' +
+                ", group='" + group + '\'' +
+                ", major='" + major + '\'' +
+                ", year='" + year + '\'' +
+                '}';
+    }
 }
