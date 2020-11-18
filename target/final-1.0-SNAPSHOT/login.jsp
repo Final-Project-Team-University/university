@@ -13,15 +13,7 @@
 
 </head>
 <body>
-<%--<form class="form" action="<%= request.getContextPath() %>/LoginServlet" id="login">--%>
 
-<%--        <pre>--%>
-<%--            <p>Email: <input type="text" name="email" class="feedback-input"></p>--%>
-<%--            <p> Password: <input type="password" name="password" class="feedback-input"></p>--%>
-<%--            <p><input type="submit" name="submit"  class="button-submit" value="login"></p>--%>
-
-<%--        </pre>--%>
-<%--</form>--%>
 
 <div class="page">
     <div class="container">
